@@ -2,7 +2,7 @@ import apiClient from './client';
 import { ApiResponse, Category } from '@/types';
 import { mockCategories } from '@/mocks/categories';
 
-const USE_MOCK = true;
+const USE_MOCK = false;
 
 export const categoryApi = {
   getCategories: async (): Promise<ApiResponse<Category[]>> => {

@@ -2,7 +2,7 @@ import apiClient from './client';
 import { ApiResponse, TableDashboard, SetupTableRequest } from '@/types';
 import { mockTableDashboards } from '@/mocks/orders';
 
-const USE_MOCK = true;
+const USE_MOCK = false;
 
 export const tableApi = {
   getTables: async (): Promise<ApiResponse<TableDashboard[]>> => {

@@ -1,7 +1,7 @@
 import apiClient from './client';
 import { ApiResponse, TableLoginRequest, AdminLoginRequest, TableInfo, Admin } from '@/types';
 
-const USE_MOCK = true;
+const USE_MOCK = false;
 
 export const authApi = {
   tableLogin: async (data: TableLoginRequest): Promise<ApiResponse<{ token: string; table: TableInfo }>> => {
@@ -16,7 +16,15 @@ export const authApi = {
       };
     }
     const res = await apiClient.post('/auth/table/login', data);
-    return res.data;
+    // BE 응답: { token, table: { id, storeId, tableNo }, session: { sessionId, startedAt } }
+    const { token, table, session } = res.data.data;
+    return {
+      success: true,
+      data: {
+        token,
+        table: { ...table, sessionId: session?.sessionId ?? null },
+      },
+    };
   },
 
   adminLogin: async (data: AdminLoginRequest): Promise<ApiResponse<{ token: string; admin: Admin }>> => {

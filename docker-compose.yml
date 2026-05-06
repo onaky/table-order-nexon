@@ -25,7 +25,7 @@ services:
       dockerfile: Dockerfile
     container_name: table-order-backend
     environment:
-      PORT: 3000
+      PORT: 4000
       NODE_ENV: development
       DB_HOST: mysql
       DB_PORT: 3306
@@ -38,7 +38,7 @@ services:
       UPLOAD_DIR: uploads
       MAX_FILE_SIZE: 5242880
     ports:
-      - "3000:3000"
+      - "4000:4000"
     volumes:
       - ./backend/uploads:/app/uploads
     depends_on:

@@ -1,7 +1,7 @@
 import apiClient from './client';
 import { ApiResponse, UploadResponse } from '@/types';
 
-const USE_MOCK = true;
+const USE_MOCK = false;
 
 export const uploadApi = {
   uploadImage: async (file: File): Promise<ApiResponse<UploadResponse>> => {
@@ -21,7 +21,10 @@ export const uploadApi = {
     const res = await apiClient.post('/uploads/image', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
-    return res.data;
+    // BE 응답: { imageUrl: "/uploads/filename.jpg" }
+    const imageUrl = res.data.data?.imageUrl ?? '';
+    const filename = imageUrl.replace('/uploads/', '');
+    return { success: true, data: { filename, url: imageUrl } };
   },
 
   deleteImage: async (filename: string): Promise<ApiResponse<void>> => {

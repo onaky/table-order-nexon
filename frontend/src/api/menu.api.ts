@@ -2,7 +2,7 @@ import apiClient from './client';
 import { ApiResponse, Menu, MenuDetail, CreateMenuRequest, UpdateMenuRequest, ReorderMenusRequest } from '@/types';
 import { mockMenus } from '@/mocks/menus';
 
-const USE_MOCK = true;
+const USE_MOCK = false;
 
 export const menuApi = {
   getMenus: async (categoryId?: number): Promise<ApiResponse<Menu[]>> => {

@@ -9,9 +9,18 @@ const apiClient = axios.create({
 
 // Request interceptor: 토큰 자동 첨부
 apiClient.interceptors.request.use((config) => {
-  const token = localStorage.getItem('auth-token');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+  // zustand persist storage에서 토큰 읽기
+  const stored = localStorage.getItem('auth-storage');
+  if (stored) {
+    try {
+      const parsed = JSON.parse(stored);
+      const token = parsed?.state?.token;
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    } catch {
+      // 파싱 실패 시 무시
+    }
   }
   return config;
 });

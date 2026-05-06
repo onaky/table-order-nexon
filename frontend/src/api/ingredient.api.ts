@@ -2,7 +2,7 @@ import apiClient from './client';
 import { ApiResponse, Ingredient, CreateIngredientRequest } from '@/types';
 import { mockIngredients } from '@/mocks/ingredients';
 
-const USE_MOCK = true;
+const USE_MOCK = false;
 
 export const ingredientApi = {
   getIngredients: async (): Promise<ApiResponse<Ingredient[]>> => {

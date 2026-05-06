@@ -3,7 +3,7 @@ import { ApiResponse, Order, CreateOrderRequest, UpdateOrderStatusRequest, Order
 import { mockOrders } from '@/mocks/orders';
 import { mockMenus } from '@/mocks/menus';
 
-const USE_MOCK = true;
+const USE_MOCK = false;
 let mockOrderCounter = 5;
 
 export const orderApi = {
@@ -56,7 +56,8 @@ export const orderApi = {
       );
       return { success: true, data: filtered };
     }
-    const res = await apiClient.get('/orders', { params: { tableId, sessionId } });
+    // BE는 토큰에서 tableId/sessionId를 추출하므로 params 불필요
+    const res = await apiClient.get('/orders');
     return res.data;
   },
 
