@@ -1,6 +1,7 @@
 import apiClient from './client';
 import { ApiResponse, Order, CreateOrderRequest, UpdateOrderStatusRequest, OrderHistory } from '@/types';
 import { mockOrders } from '@/mocks/orders';
+import { mockMenus } from '@/mocks/menus';
 
 const USE_MOCK = true;
 let mockOrderCounter = 5;
@@ -12,6 +13,20 @@ export const orderApi = {
       mockOrderCounter++;
       const now = new Date();
       const dateStr = `${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}`;
+
+      const orderItems = data.items.map((item, idx) => {
+        const menu = mockMenus.find((m) => m.id === item.menuId);
+        return {
+          id: Date.now() + idx,
+          menuId: item.menuId,
+          menuName: menu?.name ?? `메뉴 ${item.menuId}`,
+          quantity: item.quantity,
+          unitPrice: menu?.price ?? 0,
+        };
+      });
+
+      const totalAmount = orderItems.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+
       const newOrder: Order = {
         id: Date.now(),
         orderNumber: `${dateStr}-${String(mockOrderCounter).padStart(3, '0')}`,
@@ -19,16 +34,14 @@ export const orderApi = {
         tableNo: data.tableId,
         sessionId: data.sessionId,
         status: 'pending',
-        totalAmount: 0,
-        items: data.items.map((item, idx) => ({
-          id: Date.now() + idx,
-          menuId: item.menuId,
-          menuName: `메뉴 ${item.menuId}`,
-          quantity: item.quantity,
-          unitPrice: 0,
-        })),
+        totalAmount,
+        items: orderItems,
         createdAt: now.toISOString(),
       };
+
+      // 목업 주문 목록에 추가 (주문 내역 조회에서 보이도록)
+      mockOrders.push(newOrder);
+
       return { success: true, data: newOrder };
     }
     const res = await apiClient.post('/orders', data);

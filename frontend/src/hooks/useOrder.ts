@@ -1,25 +1,33 @@
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { orderApi } from '@/api/order.api';
 import { CreateOrderRequest, UpdateOrderStatusRequest } from '@/types';
 import { useAuthStore } from '@/stores/authStore';
 
 export function useCreateOrder() {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: (data: CreateOrderRequest) => orderApi.createOrder(data),
+    onSuccess: () => {
+      // 주문 생성 후 주문 내역 캐시 무효화
+      queryClient.invalidateQueries({ queryKey: ['orders'] });
+    },
   });
 }
 
 export function useOrders() {
   const tableInfo = useAuthStore((s) => s.tableInfo);
 
+  // 목업 모드: tableInfo 없으면 기본값 사용
+  const effectiveTableId = tableInfo?.id ?? 1;
+  const effectiveSessionId = tableInfo?.sessionId ?? 'session-001';
+
   return useQuery({
-    queryKey: ['orders', tableInfo?.id, tableInfo?.sessionId],
+    queryKey: ['orders', effectiveTableId, effectiveSessionId],
     queryFn: async () => {
-      if (!tableInfo?.id || !tableInfo?.sessionId) return [];
-      const res = await orderApi.getOrders(tableInfo.id, tableInfo.sessionId);
+      const res = await orderApi.getOrders(effectiveTableId, effectiveSessionId);
       return res.data ?? [];
     },
-    enabled: !!tableInfo?.id && !!tableInfo?.sessionId,
   });
 }
 

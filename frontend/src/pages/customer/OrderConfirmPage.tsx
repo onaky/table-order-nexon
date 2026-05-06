@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCartStore } from '@/stores/cartStore';
 import { useAuthStore } from '@/stores/authStore';
@@ -11,15 +12,19 @@ export default function OrderConfirmPage() {
   const { items, totalAmount, clearCart } = useCartStore();
   const tableInfo = useAuthStore((s) => s.tableInfo);
   const createOrder = useCreateOrder();
+  // 주문 확정 후 clearCart로 items가 비어도 리다이렉트 방지
+  const hasSubmitted = useRef(false);
 
   const handleConfirmOrder = () => {
+    hasSubmitted.current = true;
+
     // 목업 모드: tableInfo 없으면 기본값 사용
-    const effectiveTableInfo = tableInfo || { id: 1, storeId: 'store-01', tableNo: 1, sessionId: `session-${Date.now()}` };
+    const effectiveTableInfo = tableInfo || { id: 1, storeId: 'store-01', tableNo: 1, sessionId: 'session-001' };
 
     createOrder.mutate(
       {
         tableId: effectiveTableInfo.id,
-        sessionId: effectiveTableInfo.sessionId || `session-${Date.now()}`,
+        sessionId: effectiveTableInfo.sessionId || 'session-001',
         items: items.map((item) => ({ menuId: item.menuId, quantity: item.quantity })),
       },
       {
@@ -28,20 +33,24 @@ export default function OrderConfirmPage() {
             clearCart();
             navigate('/customer/order/success', {
               state: { orderNumber: res.data.orderNumber },
+              replace: true,
             });
           } else {
+            hasSubmitted.current = false;
             showToast('error', res.error || '주문에 실패했습니다.');
           }
         },
         onError: () => {
+          hasSubmitted.current = false;
           showToast('error', '주문 처리 중 오류가 발생했습니다.');
         },
       },
     );
   };
 
-  if (items.length === 0) {
-    navigate('/customer/cart');
+  // 장바구니 비어있고 아직 주문 제출 안 했으면 cart로 이동
+  if (items.length === 0 && !hasSubmitted.current) {
+    navigate('/customer/cart', { replace: true });
     return null;
   }
 
