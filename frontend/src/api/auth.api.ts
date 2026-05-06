@@ -1,5 +1,5 @@
 import apiClient from './client';
-import { ApiResponse, TableLoginRequest, AdminLoginRequest, AuthToken, TableInfo, Admin } from '@/types';
+import { ApiResponse, TableLoginRequest, AdminLoginRequest, TableInfo, Admin } from '@/types';
 
 const USE_MOCK = true;
 
