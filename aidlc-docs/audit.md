@@ -188,3 +188,28 @@
 **Context**: CONSTRUCTION Phase entry. User wants to split work between 2 developers (FE + BE) and needs guidance on how to proceed independently.
 
 ---
+
+## (BE) Functional Design - Answers Received (Backend API)
+**Timestamp**: 2026-05-06T10:00:00Z
+**User Input**: Q1:C (고객 접속 시 세션 시작), Q2:C (매장+날짜+순번), Q3:B (이미지 기반 가상 3D)
+**AI Response**: Answers clear, no ambiguities. Proceeding to generate functional design artifacts for Backend API unit.
+**Context**: CONSTRUCTION Phase - Functional Design. All 3 questions answered.
+
+---
+
+## (BE) Functional Design - Backend API Artifacts Generated
+**Timestamp**: 2026-05-06T10:05:00Z
+**AI Response**: Generated functional design artifacts for Backend API unit:
+- domain-entities.md: 11 entities with fields, types, constraints, indexes, relationships
+- business-logic-model.md: 10 detailed flow diagrams (auth, order, session, menu, ingredient, SSE, upload)
+- business-rules.md: 8 rule categories with 30+ specific rules
+**Context**: CONSTRUCTION Phase - Functional Design. Backend API unit functional design complete. Artifacts at aidlc-docs/construction/backend-api/functional-design/
+
+---
+
+## (BE) Code Generation Planning - Backend API Plan Created
+**Timestamp**: 2026-05-06T10:15:00Z
+**AI Response**: Created backend-api-code-generation-plan.md with 15 steps covering project setup through deployment artifacts. Total ~54 files to generate. All 18 stories mapped to specific steps.
+**Context**: CONSTRUCTION Phase - Code Generation Part 1 (Planning). Plan covers: project structure, config, entities, middleware, services (auth/menu/order/table/SSE/upload), controllers, routes, app entry, seed script, docs, deployment.
+
+---
