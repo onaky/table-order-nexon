@@ -33,7 +33,7 @@ export class Order {
   @Column({ type: 'varchar', length: 36 })
   sessionId!: string;
 
-  @Column({ type: 'enum', enum: OrderStatus, default: OrderStatus.PENDING })
+  @Column({ type: 'varchar', length: 20, default: OrderStatus.PENDING })
   status!: OrderStatus;
 
   @Column({ type: 'int' })

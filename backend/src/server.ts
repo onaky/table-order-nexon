@@ -1,9 +1,17 @@
 import { app } from './app';
 import { config } from './config';
 import { AppDataSource } from './config/database';
+import fs from 'fs';
+import path from 'path';
 
 const startServer = async () => {
   try {
+    // data 디렉토리 자동 생성 (SQLite용)
+    const dataDir = path.join(__dirname, '../data');
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+
     // Database connection
     await AppDataSource.initialize();
     console.log('✅ Database connected successfully');
