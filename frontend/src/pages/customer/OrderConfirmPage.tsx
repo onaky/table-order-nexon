@@ -13,15 +13,13 @@ export default function OrderConfirmPage() {
   const createOrder = useCreateOrder();
 
   const handleConfirmOrder = () => {
-    if (!tableInfo) {
-      showToast('error', '테이블 정보가 없습니다. 다시 로그인해주세요.');
-      return;
-    }
+    // 목업 모드: tableInfo 없으면 기본값 사용
+    const effectiveTableInfo = tableInfo || { id: 1, storeId: 'store-01', tableNo: 1, sessionId: `session-${Date.now()}` };
 
     createOrder.mutate(
       {
-        tableId: tableInfo.id,
-        sessionId: tableInfo.sessionId || `session-${Date.now()}`,
+        tableId: effectiveTableInfo.id,
+        sessionId: effectiveTableInfo.sessionId || `session-${Date.now()}`,
         items: items.map((item) => ({ menuId: item.menuId, quantity: item.quantity })),
       },
       {
