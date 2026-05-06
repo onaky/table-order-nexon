@@ -4,7 +4,7 @@ export const mockIngredients: Ingredient[] = [
   {
     id: 1,
     name: '앵거스 비프 패티',
-    imageUrl: 'https://placehold.co/100x100/1a1a1a/white?text=Beef',
+    imageUrl: 'https://images.unsplash.com/photo-1588168333986-5078d3ae3976?w=200&h=200&fit=crop',
     calories: 250,
     flavorProfile: ['umami', 'salty'],
     isVegan: false,
@@ -12,7 +12,7 @@ export const mockIngredients: Ingredient[] = [
   {
     id: 2,
     name: '체다 치즈',
-    imageUrl: 'https://placehold.co/100x100/1a1a1a/white?text=Cheese',
+    imageUrl: 'https://images.unsplash.com/photo-1618164436241-4473940d1f5c?w=200&h=200&fit=crop',
     calories: 110,
     flavorProfile: ['salty', 'umami'],
     isVegan: false,
@@ -20,7 +20,7 @@ export const mockIngredients: Ingredient[] = [
   {
     id: 3,
     name: '유기농 양상추',
-    imageUrl: 'https://placehold.co/100x100/1a1a1a/white?text=Lettuce',
+    imageUrl: 'https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=200&h=200&fit=crop',
     calories: 5,
     flavorProfile: ['mild'],
     isVegan: true,
@@ -28,7 +28,7 @@ export const mockIngredients: Ingredient[] = [
   {
     id: 4,
     name: '토마토',
-    imageUrl: 'https://placehold.co/100x100/1a1a1a/white?text=Tomato',
+    imageUrl: 'https://images.unsplash.com/photo-1546470427-0d62b9f43f23?w=200&h=200&fit=crop',
     calories: 15,
     flavorProfile: ['sour', 'sweet'],
     isVegan: true,
@@ -36,7 +36,7 @@ export const mockIngredients: Ingredient[] = [
   {
     id: 5,
     name: '할라피뇨',
-    imageUrl: 'https://placehold.co/100x100/1a1a1a/white?text=Jalapeno',
+    imageUrl: 'https://images.unsplash.com/photo-1583119022894-919a68a3d0e3?w=200&h=200&fit=crop',
     calories: 4,
     flavorProfile: ['spicy'],
     isVegan: true,
@@ -44,7 +44,7 @@ export const mockIngredients: Ingredient[] = [
   {
     id: 6,
     name: '트러플 소스',
-    imageUrl: 'https://placehold.co/100x100/1a1a1a/white?text=Truffle',
+    imageUrl: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=200&h=200&fit=crop',
     calories: 80,
     flavorProfile: ['umami', 'bitter'],
     isVegan: true,
@@ -52,7 +52,7 @@ export const mockIngredients: Ingredient[] = [
   {
     id: 7,
     name: '새우',
-    imageUrl: 'https://placehold.co/100x100/1a1a1a/white?text=Shrimp',
+    imageUrl: 'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=200&h=200&fit=crop',
     calories: 85,
     flavorProfile: ['sweet', 'salty'],
     isVegan: false,
@@ -60,7 +60,7 @@ export const mockIngredients: Ingredient[] = [
   {
     id: 8,
     name: '아보카도',
-    imageUrl: 'https://placehold.co/100x100/1a1a1a/white?text=Avocado',
+    imageUrl: 'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=200&h=200&fit=crop',
     calories: 160,
     flavorProfile: ['mild', 'sweet'],
     isVegan: true,
