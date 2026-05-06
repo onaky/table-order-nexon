@@ -1,0 +1,68 @@
+import { Ingredient } from '@/types';
+
+export const mockIngredients: Ingredient[] = [
+  {
+    id: 1,
+    name: '앵거스 비프 패티',
+    imageUrl: 'https://placehold.co/100x100/1a1a1a/white?text=Beef',
+    calories: 250,
+    flavorProfile: ['umami', 'salty'],
+    isVegan: false,
+  },
+  {
+    id: 2,
+    name: '체다 치즈',
+    imageUrl: 'https://placehold.co/100x100/1a1a1a/white?text=Cheese',
+    calories: 110,
+    flavorProfile: ['salty', 'umami'],
+    isVegan: false,
+  },
+  {
+    id: 3,
+    name: '유기농 양상추',
+    imageUrl: 'https://placehold.co/100x100/1a1a1a/white?text=Lettuce',
+    calories: 5,
+    flavorProfile: ['mild'],
+    isVegan: true,
+  },
+  {
+    id: 4,
+    name: '토마토',
+    imageUrl: 'https://placehold.co/100x100/1a1a1a/white?text=Tomato',
+    calories: 15,
+    flavorProfile: ['sour', 'sweet'],
+    isVegan: true,
+  },
+  {
+    id: 5,
+    name: '할라피뇨',
+    imageUrl: 'https://placehold.co/100x100/1a1a1a/white?text=Jalapeno',
+    calories: 4,
+    flavorProfile: ['spicy'],
+    isVegan: true,
+  },
+  {
+    id: 6,
+    name: '트러플 소스',
+    imageUrl: 'https://placehold.co/100x100/1a1a1a/white?text=Truffle',
+    calories: 80,
+    flavorProfile: ['umami', 'bitter'],
+    isVegan: true,
+  },
+  {
+    id: 7,
+    name: '새우',
+    imageUrl: 'https://placehold.co/100x100/1a1a1a/white?text=Shrimp',
+    calories: 85,
+    flavorProfile: ['sweet', 'salty'],
+    isVegan: false,
+  },
+  {
+    id: 8,
+    name: '아보카도',
+    imageUrl: 'https://placehold.co/100x100/1a1a1a/white?text=Avocado',
+    calories: 160,
+    flavorProfile: ['mild', 'sweet'],
+    isVegan: true,
+  },
+];
