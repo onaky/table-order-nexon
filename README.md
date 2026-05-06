@@ -1,64 +1,148 @@
-# AIDLC Workshop
+# 🍽️ Table Order - Premium Dining Experience
 
-AIDLC (AI-Driven Development Life Cycle) 워크샵을 위한 사전 구성 프로젝트입니다.
+차세대 프리미엄 테이블오더 플랫폼입니다. 고객에게는 **3D 메뉴 시각화와 재료 기반 정보**를, 매장 운영자에게는 **실시간 주문 모니터링과 경과 시간 시각화**를 제공합니다.
 
-## 개요
+## ✨ 핵심 차별화
 
-이 프로젝트는 AIDLC 워크샵 참가자들이 별도의 설정 없이 바로 실습을 시작할 수 있도록 필요한 파일과 구조를 미리 세팅해둔 템플릿입니다.
+| 기능 | 설명 |
+|------|------|
+| 🎮 **3D 메뉴 시각화** | 코드 기반 프로시저럴 3D 음식 모델 (React Three Fiber) |
+| 🥗 **재료 기반 정보** | 각 메뉴의 재료별 칼로리, 맛 프로필, 비건 여부 표시 |
+| ⏱️ **주문 경과 시간** | 3단계 색상 변화 (초록→주황→빨강) + 경고 펄스 애니메이션 |
+| 📊 **실시간 매출 차트** | 테이블별 매출 바 차트 |
+| 🖱️ **드래그 앤 드롭** | 메뉴 순서 직관적 관리 |
+| 🌙 **다크 모드 프리미엄** | 블랙 배경 기반 고급스러운 UI |
 
-## 시작하기
-
-1. 이 프로젝트를 클론하거나 다운로드합니다
-2. 프로젝트 디렉토리에서 Kiro IDE 또는 Kiro CLI를 실행합니다
-3. 추가 설정 없이 AIDLC 워크플로우를 바로 시작할 수 있습니다
-
-### 환경별 Agent 설정
-
-이 프로젝트는 실행 환경에 따라 다른 Agent 설정을 사용합니다:
-
-- **Kiro IDE**: `AGENTS.md`를 이용하여 기본 Agent에 가이드 설정
-  - `.kiro/steering/` 디렉토리의 워크플로우 규칙 적용
-  - 한국어 응답 (기술 용어 제외)
-  - 구조화된 워크플로우 가이드
-  - 모든 단계에서 사용자 승인 필수
-
-- **Kiro CLI**: `.kiro/agents/aidlc-worker.json`의 agent 설정을 통해 Custom Agent 생성
-  - 한국어 응답 (기술 용어 제외)
-  - 구조화된 워크플로우 가이드
-  - 모든 단계에서 사용자 승인 필수
-
-## 프로젝트 구조
+## 🏗️ 서비스 구성
 
 ```
-aidlc-workshop/
-├── .kiro/                          # Kiro 설정
-│   ├── agents/                     # Custom Agent 설정 (CLI용)
-│   │   └── aidlc-worker.json
-│   ├── steering/                   # AIDLC 워크플로우 규칙
-│   │   └── aws-aidlc-rules/
-│   └── aws-aidlc-rule-details/     # 상세 규칙 문서
-├── AGENTS.md                       # Agent 가이드 (IDE용)
-└── README.md                       # 프로젝트 설명
+┌─────────────────────────────────────────────────────────┐
+│                    Table Order System                     │
+├──────────────────────┬──────────────────────────────────┤
+│   고객용 인터페이스    │        관리자용 인터페이스         │
+│                      │                                  │
+│  • 메뉴 탐색 (3D)    │  • 실시간 주문 대시보드           │
+│  • 재료 정보 확인     │  • 주문 경과 시간 시각화          │
+│  • 장바구니 관리      │  • 테이블 관리 (세션 제어)        │
+│  • 주문 생성/조회     │  • 메뉴 관리 (CRUD + DnD)       │
+│  • 주문 상태 확인     │  • 재료 관리                     │
+│                      │  • 매출 차트                     │
+└──────────────────────┴──────────────────────────────────┘
 ```
 
-## 사전 구성 내용
+## 🛠️ 기술 스택
 
-- **AIDLC 워크플로우 규칙**: Inception, Construction, Operations 단계별 가이드
-- **Agent 설정**: aidlc-worker agent
-- **한국어 지원**: 기술 용어를 제외한 모든 응답이 한국어로 제공됩니다
+### Frontend
+| 기술 | 용도 |
+|------|------|
+| React 18 + TypeScript | UI 프레임워크 |
+| Vite | 빌드 도구 |
+| Tailwind CSS | 스타일링 (다크 모드 커스텀 테마) |
+| Zustand | 클라이언트 상태 관리 |
+| TanStack React Query | 서버 상태 관리 |
+| React Three Fiber + Drei | 3D 렌더링 |
+| Framer Motion | 애니메이션 |
+| Recharts | 차트 |
+| dnd-kit | 드래그 앤 드롭 |
+| Axios | HTTP 클라이언트 |
 
-## 워크플로우
+### Backend (개발 예정)
+| 기술 | 용도 |
+|------|------|
+| Node.js + Express + TypeScript | REST API |
+| TypeORM + MySQL | 데이터베이스 |
+| JWT + bcrypt | 인증 |
+| Server-Sent Events (SSE) | 실시간 통신 |
+| Multer | 파일 업로드 |
 
-AIDLC는 다음 단계로 구성됩니다:
+## 🚀 실행 방법
 
-1. **Inception Phase**: 요구사항 분석, 설계, 계획 수립
-2. **Construction Phase**: 상세 설계, 코드 생성, 빌드 및 테스트
-3. **Operations Phase**: 배포 및 운영 (향후 확장 예정)
+### Frontend (목업 모드)
 
-## 요구사항
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-- Kiro IDE 또는 Kiro CLI 설치
+http://localhost:3000 접속
 
-## 라이선스
+### 주요 경로
+
+| 경로 | 설명 |
+|------|------|
+| `/customer/menu` | 고객 메뉴 화면 (기본) |
+| `/customer/menu/:id` | 메뉴 상세 (3D + 재료) |
+| `/customer/cart` | 장바구니 |
+| `/customer/orders` | 주문 내역 |
+| `/admin/dashboard` | 관리자 대시보드 |
+| `/admin/tables` | 테이블 관리 |
+| `/admin/menus` | 메뉴 관리 (DnD) |
+| `/admin/ingredients` | 재료 관리 |
+
+> 현재 목업 모드로 동작합니다. 로그인 없이 모든 기능을 확인할 수 있습니다.
+
+## 📁 프로젝트 구조
+
+```
+table-order-nexon/
+├── frontend/                    # React 프론트엔드
+│   ├── src/
+│   │   ├── api/                 # API 레이어 (목업 모드 포함)
+│   │   ├── components/          # UI 컴포넌트
+│   │   │   ├── admin/           # 관리자 전용 (차트, DnD)
+│   │   │   ├── common/          # 공통 (Toast, Modal, Spinner)
+│   │   │   ├── layout/          # 레이아웃
+│   │   │   ├── menu/            # 메뉴 (카드, 3D뷰어, 재료, models/)
+│   │   │   └── order/           # 주문 (상태뱃지, 경과시간, 테이블카드)
+│   │   ├── hooks/               # 커스텀 훅
+│   │   ├── mocks/               # 목업 데이터
+│   │   ├── pages/               # 페이지 (customer/, admin/)
+│   │   ├── stores/              # Zustand 스토어
+│   │   └── types/               # TypeScript 타입
+│   └── ...
+├── backend/                     # Express 백엔드 (개발 예정)
+├── requirements/                # 요구사항 문서
+├── aidlc-docs/                  # AI-DLC 설계 문서
+└── README.md
+```
+
+## 🎯 주요 시나리오
+
+### 고객 플로우
+1. 메뉴 탐색 → 카테고리별 필터링
+2. 메뉴 상세 → 3D 모델 회전 + 재료 정보 (칼로리, 비건) 확인
+3. 장바구니 담기 → 수량 조절
+4. 주문 확정 → 성공 화면 (5초 카운트다운) → 메뉴로 복귀
+5. 주문 내역에서 상태 확인 (대기중 → 준비중 → 완료)
+
+### 관리자 플로우
+1. 대시보드에서 실시간 주문 모니터링
+2. 경과 시간 색상으로 오래된 주문 즉시 파악 (10분+ 빨간색 펄스)
+3. 주문 상태 변경 / 삭제
+4. 테이블 이용 완료 처리 (세션 리셋)
+5. 메뉴 추가/수정/삭제 + 드래그로 순서 변경
+6. 재료 관리 (칼로리, 맛 프로필, 비건 태그)
+
+## 👥 페르소나
+
+| 페르소나 | 역할 | 핵심 니즈 |
+|----------|------|-----------|
+| 김민수 | 일반 고객 | 빠르고 편리한 주문 |
+| 이지은 | 건강 관리 고객 | 재료/칼로리 정보로 메뉴 선택 |
+| 최영호 | 까다로운 고객 | 3초 내 로딩, 충분한 정보, 주문 방치감 없음 |
+| 박준호 | 매장 관리자 | 주문 놓치지 않기, 효율적 운영 |
+
+## 📋 개발 방법론
+
+이 프로젝트는 **AI-DLC (AI-Driven Development Life Cycle)** 워크플로우로 개발되었습니다:
+
+- **Inception Phase**: 요구사항 분석 → User Stories → Application Design → Units Generation
+- **Construction Phase**: Functional Design → Code Generation → Build & Test
+- **병행 개발**: Frontend(목업) + Backend(API) 독립 개발 → 최종 연동
+
+설계 문서는 `aidlc-docs/` 디렉토리에서 확인할 수 있습니다.
+
+## 📄 라이선스
 
 워크샵 교육용 프로젝트입니다.
