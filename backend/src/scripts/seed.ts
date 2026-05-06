@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { AppDataSource } from '../config/database';
 import { Store, Admin, Table, Category, Menu, Ingredient, MenuIngredient } from '../entities';
 
