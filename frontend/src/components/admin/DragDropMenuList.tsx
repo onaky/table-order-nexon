@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { DndContext, closestCenter, PointerSensor, TouchSensor, useSensor, useSensors, DragEndEvent } from '@dnd-kit/core';
 import { arrayMove, SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
@@ -24,14 +24,14 @@ function SortableMenuItem({ menu, onEdit, onDelete }: { menu: Menu; onEdit: (m: 
     <div
       ref={setNodeRef}
       style={style}
-      className={`card flex items-center gap-3 ${isDragging ? 'shadow-lg shadow-primary-500/10' : ''}`}
+      className={`card flex items-center gap-3 ${isDragging ? 'shadow-lg shadow-primary-500/10 z-10' : ''}`}
       data-testid={`dnd-menu-${menu.id}`}
     >
       {/* 드래그 핸들 */}
       <button
         {...attributes}
         {...listeners}
-        className="cursor-grab active:cursor-grabbing p-1 text-gray-500 hover:text-gray-300"
+        className="cursor-grab active:cursor-grabbing p-1 text-gray-500 hover:text-gray-300 touch-none"
         data-testid={`dnd-handle-${menu.id}`}
       >
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -82,6 +82,11 @@ export default function DragDropMenuList({ menus, onReorder, onEdit, onDelete }:
     useSensor(TouchSensor, { activationConstraint: { delay: 200, tolerance: 5 } }),
   );
 
+  // 외부 menus prop 변경 시 동기화
+  useEffect(() => {
+    setItems(menus);
+  }, [menus]);
+
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
     if (!over || active.id === over.id) return;
@@ -92,11 +97,6 @@ export default function DragDropMenuList({ menus, onReorder, onEdit, onDelete }:
     setItems(newItems);
     onReorder(newItems.map((i) => i.id));
   };
-
-  // 외부에서 menus가 변경되면 동기화
-  if (JSON.stringify(menus.map((m) => m.id)) !== JSON.stringify(items.map((i) => i.id))) {
-    setItems(menus);
-  }
 
   return (
     <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>

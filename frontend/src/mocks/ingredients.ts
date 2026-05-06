@@ -28,7 +28,7 @@ export const mockIngredients: Ingredient[] = [
   {
     id: 4,
     name: '토마토',
-    imageUrl: 'https://images.unsplash.com/photo-1546470427-0d62b9f43f23?w=200&h=200&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=200&h=200&fit=crop',
     calories: 15,
     flavorProfile: ['sour', 'sweet'],
     isVegan: true,

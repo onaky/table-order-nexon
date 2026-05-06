@@ -61,6 +61,13 @@ export const menuApi = {
   reorderMenus: async (data: ReorderMenusRequest): Promise<ApiResponse<void>> => {
     if (USE_MOCK) {
       await new Promise((r) => setTimeout(r, 300));
+      // 목업에서도 실제 순서 변경 반영
+      data.menuIds.forEach((id, idx) => {
+        const menu = mockMenus.find((m) => m.id === id);
+        if (menu) menu.sortOrder = idx + 1;
+      });
+      // mockMenus 배열 순서도 변경
+      mockMenus.sort((a, b) => a.sortOrder - b.sortOrder);
       return { success: true };
     }
     const res = await apiClient.put('/menus/reorder', data);
