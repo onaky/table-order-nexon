@@ -45,12 +45,12 @@
 
 ## Code Generation Steps
 
-### Step 1: Project Structure Setup
-- [ ] `backend/` 디렉토리 생성
-- [ ] `package.json` 생성 (dependencies, scripts 정의)
-- [ ] `tsconfig.json` 생성
-- [ ] `.env.example` 생성 (환경변수 템플릿)
-- [ ] `backend/src/` 하위 디렉토리 구조 생성
+### Step 1: Project Structure Setup ✅
+- [x] `backend/` 디렉토리 생성
+- [x] `package.json` 생성 (dependencies, scripts 정의)
+- [x] `tsconfig.json` 생성
+- [x] `.env.example` 생성 (환경변수 템플릿)
+- [x] `backend/src/` 하위 디렉토리 구조 생성
 
 **생성 파일:**
 ```
@@ -74,48 +74,48 @@ backend/
 
 ---
 
-### Step 2: Configuration & Utilities
-- [ ] `src/config/database.ts` — TypeORM DataSource 설정
-- [ ] `src/config/index.ts` — 환경변수 로드 및 설정 객체
-- [ ] `src/types/index.ts` — 공통 타입/인터페이스 정의 (DTO, Enum, Request 확장)
-- [ ] `src/utils/response.ts` — 표준 응답 헬퍼 (successResponse, errorResponse)
+### Step 2: Configuration & Utilities ✅
+- [x] `src/config/database.ts` — TypeORM DataSource 설정
+- [x] `src/config/index.ts` — 환경변수 로드 및 설정 객체
+- [x] `src/types/index.ts` — 공통 타입/인터페이스 정의 (DTO, Enum, Request 확장)
+- [x] `src/utils/response.ts` — 표준 응답 헬퍼 (successResponse, errorResponse)
 
 **Stories**: 전체 (공통 인프라)
 
 ---
 
-### Step 3: Entity Layer (TypeORM Entities)
-- [ ] `src/entities/Store.ts`
-- [ ] `src/entities/Admin.ts`
-- [ ] `src/entities/Table.ts`
-- [ ] `src/entities/TableSession.ts`
-- [ ] `src/entities/Category.ts`
-- [ ] `src/entities/Menu.ts`
-- [ ] `src/entities/Ingredient.ts`
-- [ ] `src/entities/MenuIngredient.ts`
-- [ ] `src/entities/Order.ts`
-- [ ] `src/entities/OrderItem.ts`
-- [ ] `src/entities/OrderHistory.ts`
-- [ ] `src/entities/index.ts` — 전체 Entity export
+### Step 3: Entity Layer (TypeORM Entities) ✅
+- [x] `src/entities/Store.ts`
+- [x] `src/entities/Admin.ts`
+- [x] `src/entities/Table.ts`
+- [x] `src/entities/TableSession.ts`
+- [x] `src/entities/Category.ts`
+- [x] `src/entities/Menu.ts`
+- [x] `src/entities/Ingredient.ts`
+- [x] `src/entities/MenuIngredient.ts`
+- [x] `src/entities/Order.ts`
+- [x] `src/entities/OrderItem.ts`
+- [x] `src/entities/OrderHistory.ts`
+- [x] `src/entities/index.ts` — 전체 Entity export
 
 **Stories**: 전체 (데이터 모델 기반)
 **참조**: `domain-entities.md`
 
 ---
 
-### Step 4: Middleware Layer
-- [ ] `src/middleware/auth.middleware.ts` — JWT 검증 (Admin 전용)
-- [ ] `src/middleware/table-auth.middleware.ts` — JWT 검증 (Table 전용)
-- [ ] `src/middleware/error-handler.middleware.ts` — 전역 에러 핸들러
-- [ ] `src/middleware/upload.middleware.ts` — Multer 파일 업로드 설정
+### Step 4: Middleware Layer ✅
+- [x] `src/middleware/auth.middleware.ts` — JWT 검증 (Admin 전용)
+- [x] `src/middleware/table-auth.middleware.ts` — JWT 검증 (Table 전용)
+- [x] `src/middleware/error-handler.middleware.ts` — 전역 에러 핸들러
+- [x] `src/middleware/upload.middleware.ts` — Multer 파일 업로드 설정
 
 **Stories**: US-01, US-02 (인증), 전체 (에러 핸들링)
 **참조**: `business-rules.md` BR-A04, BR-R02, BR-R03
 
 ---
 
-### Step 5: Service Layer — Auth
-- [ ] `src/services/auth.service.ts`
+### Step 5: Service Layer — Auth ✅
+- [x] `src/services/auth.service.ts`
   - authenticateTable()
   - authenticateAdmin()
   - verifyToken()
@@ -127,12 +127,12 @@ backend/
 
 ---
 
-### Step 6: Service Layer — Menu & Category & Ingredient
-- [ ] `src/services/category.service.ts`
+### Step 6: Service Layer — Menu & Category & Ingredient ✅
+- [x] `src/services/category.service.ts`
   - findAll(), create(), update(), delete()
-- [ ] `src/services/menu.service.ts`
+- [x] `src/services/menu.service.ts`
   - findAll(), findById(), create(), update(), delete(), reorder()
-- [ ] `src/services/ingredient.service.ts`
+- [x] `src/services/ingredient.service.ts`
   - findAll(), findByMenu(), create(), update(), delete(), linkToMenu(), unlinkFromMenu()
 
 **Stories**: US-03, US-04, US-15, US-17, US-18, US-22
@@ -140,8 +140,8 @@ backend/
 
 ---
 
-### Step 7: Service Layer — Order
-- [ ] `src/services/order.service.ts`
+### Step 7: Service Layer — Order ✅
+- [x] `src/services/order.service.ts`
   - create()
   - findByTableSession()
   - findByStore()
@@ -154,8 +154,8 @@ backend/
 
 ---
 
-### Step 8: Service Layer — Table & Session
-- [ ] `src/services/table.service.ts`
+### Step 8: Service Layer — Table & Session ✅
+- [x] `src/services/table.service.ts`
   - findAll(), setup(), completeSession(), getCurrentSession(), createSession()
 
 **Stories**: US-11, US-13
@@ -163,10 +163,10 @@ backend/
 
 ---
 
-### Step 9: Service Layer — SSE & Upload
-- [ ] `src/services/sse.service.ts`
+### Step 9: Service Layer — SSE & Upload ✅
+- [x] `src/services/sse.service.ts`
   - addClient(), removeClient(), broadcastOrderEvent(), broadcastStatusChange()
-- [ ] `src/services/upload.service.ts`
+- [x] `src/services/upload.service.ts`
   - saveImage(), deleteImage(), getImagePath()
 
 **Stories**: US-09 (SSE), US-15, US-18 (Upload)
@@ -174,63 +174,63 @@ backend/
 
 ---
 
-### Step 10: Controller Layer
-- [ ] `src/controllers/auth.controller.ts`
-- [ ] `src/controllers/category.controller.ts`
-- [ ] `src/controllers/menu.controller.ts`
-- [ ] `src/controllers/ingredient.controller.ts`
-- [ ] `src/controllers/order.controller.ts`
-- [ ] `src/controllers/table.controller.ts`
-- [ ] `src/controllers/upload.controller.ts`
-- [ ] `src/controllers/sse.controller.ts`
+### Step 10: Controller Layer ✅
+- [x] `src/controllers/auth.controller.ts`
+- [x] `src/controllers/category.controller.ts`
+- [x] `src/controllers/menu.controller.ts`
+- [x] `src/controllers/ingredient.controller.ts`
+- [x] `src/controllers/order.controller.ts`
+- [x] `src/controllers/table.controller.ts`
+- [x] `src/controllers/upload.controller.ts`
+- [x] `src/controllers/sse.controller.ts`
 
 **Stories**: 전체 (API 엔드포인트 연결)
 **참조**: `component-methods.md` Backend Controller Methods
 
 ---
 
-### Step 11: Route Layer
-- [ ] `src/routes/index.ts` — 라우트 통합
-- [ ] `src/routes/auth.routes.ts`
-- [ ] `src/routes/category.routes.ts`
-- [ ] `src/routes/menu.routes.ts`
-- [ ] `src/routes/ingredient.routes.ts`
-- [ ] `src/routes/order.routes.ts`
-- [ ] `src/routes/table.routes.ts`
-- [ ] `src/routes/upload.routes.ts`
-- [ ] `src/routes/sse.routes.ts`
+### Step 11: Route Layer ✅
+- [x] `src/routes/index.ts` — 라우트 통합
+- [x] `src/routes/auth.routes.ts`
+- [x] `src/routes/category.routes.ts`
+- [x] `src/routes/menu.routes.ts`
+- [x] `src/routes/ingredient.routes.ts`
+- [x] `src/routes/order.routes.ts`
+- [x] `src/routes/table.routes.ts`
+- [x] `src/routes/upload.routes.ts`
+- [x] `src/routes/sse.routes.ts`
 
 **Stories**: 전체
 **참조**: `component-dependency.md` FE ↔ BE API 통신 매핑
 
 ---
 
-### Step 12: App & Server Entry Point
-- [ ] `src/app.ts` — Express 앱 설정 (CORS, JSON parser, 정적 파일, 라우트 등록, 에러 핸들러)
-- [ ] `src/server.ts` — 서버 시작 (DB 연결 → 서버 listen)
+### Step 12: App & Server Entry Point ✅
+- [x] `src/app.ts` — Express 앱 설정 (CORS, JSON parser, 정적 파일, 라우트 등록, 에러 핸들러)
+- [x] `src/server.ts` — 서버 시작 (DB 연결 → 서버 listen)
 
 **Stories**: 전체 (앱 부트스트랩)
 
 ---
 
-### Step 13: Database Seed Script
-- [ ] `src/scripts/seed.ts` — 초기 데이터 시드 (테스트용 Store, Admin, Category, Menu, Table 생성)
+### Step 13: Database Seed Script ✅
+- [x] `src/scripts/seed.ts` — 초기 데이터 시드 (테스트용 Store, Admin, Category, Menu, Table 생성)
 
 **Stories**: 전체 (개발/테스트 편의)
 
 ---
 
-### Step 14: Documentation
-- [ ] `backend/README.md` — 설치, 실행, API 개요, 환경변수 설명
-- [ ] `aidlc-docs/construction/backend-api/code/code-summary.md` — 생성된 코드 요약
+### Step 14: Documentation ✅
+- [x] `backend/README.md` — 설치, 실행, API 개요, 환경변수 설명
+- [x] `aidlc-docs/construction/backend-api/code/code-summary.md` — 생성된 코드 요약
 
 **Stories**: 전체
 
 ---
 
-### Step 15: Deployment Artifacts
-- [ ] `backend/Dockerfile` (선택 — 로컬 개발용)
-- [ ] `docker-compose.yml` (루트 — MySQL + Backend 구성)
+### Step 15: Deployment Artifacts ✅
+- [x] `backend/Dockerfile` (선택 — 로컬 개발용)
+- [x] `docker-compose.yml` (루트 — MySQL + Backend 구성)
 
 **Stories**: 전체 (개발 환경 구성)
 
