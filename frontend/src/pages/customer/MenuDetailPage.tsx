@@ -44,7 +44,7 @@ export default function MenuDetailPage() {
         {/* 3D 뷰어 (중앙) */}
         <div className="flex-1 flex items-center justify-center p-8 pt-16">
           <div className="w-full max-w-md">
-            <Menu3DViewer imageUrl={menu.imageUrl} name={menu.name} />
+            <Menu3DViewer menuId={menu.id} imageUrl={menu.imageUrl} name={menu.name} />
           </div>
         </div>
 
