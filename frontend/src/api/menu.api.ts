@@ -25,6 +25,21 @@ export const menuApi = {
       return { success: true, data: menu };
     }
     const res = await apiClient.get(`/menus/${id}`);
+    // BE 응답 변환: menuIngredients[].ingredient → ingredients[]
+    const menuData = res.data.data;
+    if (menuData && menuData.menuIngredients) {
+      menuData.ingredients = menuData.menuIngredients.map((mi: any) => ({
+        id: mi.ingredient?.id ?? mi.ingredientId,
+        name: mi.ingredient?.name ?? '',
+        imageUrl: mi.ingredient?.imageUrl ?? '',
+        calories: mi.ingredient?.calories ?? 0,
+        flavorProfile: mi.ingredient?.flavor ? [mi.ingredient.flavor] : [],
+        isVegan: mi.ingredient?.isVegan ?? false,
+      }));
+      delete menuData.menuIngredients;
+    } else {
+      menuData.ingredients = [];
+    }
     return res.data;
   },
 

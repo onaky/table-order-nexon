@@ -73,19 +73,19 @@ async function seed() {
     const menuRepo = AppDataSource.getRepository(Menu);
     const menus = await menuRepo.save([
       // 메인 메뉴
-      menuRepo.create({ storeId: 'STORE01', categoryId: categories[0].id, name: '시그니처 버거', price: 15000, description: '프리미엄 수제 버거. 100% 한우 패티와 신선한 채소의 조화', sortOrder: 0 }),
-      menuRepo.create({ storeId: 'STORE01', categoryId: categories[0].id, name: '트러플 파스타', price: 18000, description: '블랙 트러플 오일과 파르메산 치즈의 크리미한 파스타', sortOrder: 1 }),
-      menuRepo.create({ storeId: 'STORE01', categoryId: categories[0].id, name: '연어 포케볼', price: 16000, description: '신선한 연어와 아보카도, 현미밥의 건강한 한 그릇', sortOrder: 2 }),
-      menuRepo.create({ storeId: 'STORE01', categoryId: categories[0].id, name: '스테이크 플레이트', price: 28000, description: '미디엄 레어로 구운 안심 스테이크와 구운 채소', sortOrder: 3 }),
+      menuRepo.create({ storeId: 'STORE01', categoryId: categories[0].id, name: '시그니처 버거', price: 15000, description: '프리미엄 수제 버거. 100% 한우 패티와 신선한 채소의 조화', imageUrl: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&h=500&fit=crop', sortOrder: 0 }),
+      menuRepo.create({ storeId: 'STORE01', categoryId: categories[0].id, name: '트러플 파스타', price: 18000, description: '블랙 트러플 오일과 파르메산 치즈의 크리미한 파스타', imageUrl: 'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=500&h=500&fit=crop', sortOrder: 1 }),
+      menuRepo.create({ storeId: 'STORE01', categoryId: categories[0].id, name: '연어 포케볼', price: 16000, description: '신선한 연어와 아보카도, 현미밥의 건강한 한 그릇', imageUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=500&fit=crop', sortOrder: 2 }),
+      menuRepo.create({ storeId: 'STORE01', categoryId: categories[0].id, name: '스테이크 플레이트', price: 28000, description: '미디엄 레어로 구운 안심 스테이크와 구운 채소', imageUrl: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=500&fit=crop', sortOrder: 3 }),
       // 사이드
-      menuRepo.create({ storeId: 'STORE01', categoryId: categories[1].id, name: '트러플 감자튀김', price: 8000, description: '트러플 오일과 파르메산 치즈를 뿌린 바삭한 감자튀김', sortOrder: 0 }),
-      menuRepo.create({ storeId: 'STORE01', categoryId: categories[1].id, name: '시저 샐러드', price: 9000, description: '로메인 상추, 크루통, 시저 드레싱', sortOrder: 1 }),
+      menuRepo.create({ storeId: 'STORE01', categoryId: categories[1].id, name: '트러플 감자튀김', price: 8000, description: '트러플 오일과 파르메산 치즈를 뿌린 바삭한 감자튀김', imageUrl: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&h=500&fit=crop', sortOrder: 0 }),
+      menuRepo.create({ storeId: 'STORE01', categoryId: categories[1].id, name: '시저 샐러드', price: 9000, description: '로메인 상추, 크루통, 시저 드레싱', imageUrl: 'https://images.unsplash.com/photo-1546793665-c74683f339c1?w=500&h=500&fit=crop', sortOrder: 1 }),
       // 음료
-      menuRepo.create({ storeId: 'STORE01', categoryId: categories[2].id, name: '수제 레모네이드', price: 6000, description: '신선한 레몬과 허브로 만든 시원한 레모네이드', sortOrder: 0 }),
-      menuRepo.create({ storeId: 'STORE01', categoryId: categories[2].id, name: '아이스 아메리카노', price: 5000, description: '에스프레소 더블샷의 깔끔한 아메리카노', sortOrder: 1 }),
+      menuRepo.create({ storeId: 'STORE01', categoryId: categories[2].id, name: '수제 레모네이드', price: 6000, description: '신선한 레몬과 허브로 만든 시원한 레모네이드', imageUrl: 'https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=500&h=500&fit=crop', sortOrder: 0 }),
+      menuRepo.create({ storeId: 'STORE01', categoryId: categories[2].id, name: '아이스 아메리카노', price: 5000, description: '에스프레소 더블샷의 깔끔한 아메리카노', imageUrl: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=500&h=500&fit=crop', sortOrder: 1 }),
       // 디저트
-      menuRepo.create({ storeId: 'STORE01', categoryId: categories[3].id, name: '티라미수', price: 8000, description: '마스카포네 치즈와 에스프레소의 클래식 이탈리안 디저트', sortOrder: 0 }),
-      menuRepo.create({ storeId: 'STORE01', categoryId: categories[3].id, name: '크렘 브륄레', price: 9000, description: '바닐라 커스터드 위 캐러멜라이즈드 슈가', sortOrder: 1 }),
+      menuRepo.create({ storeId: 'STORE01', categoryId: categories[3].id, name: '티라미수', price: 8000, description: '마스카포네 치즈와 에스프레소의 클래식 이탈리안 디저트', imageUrl: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=500&h=500&fit=crop', sortOrder: 0 }),
+      menuRepo.create({ storeId: 'STORE01', categoryId: categories[3].id, name: '크렘 브륄레', price: 9000, description: '바닐라 커스터드 위 캐러멜라이즈드 슈가', imageUrl: 'https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=500&h=500&fit=crop', sortOrder: 1 }),
     ]);
     console.log('🍽️  Menus created:', menus.length, 'items');
 
