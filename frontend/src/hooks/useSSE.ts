@@ -4,19 +4,22 @@ import { Order, OrderStatus } from '@/types';
 
 export function useSSE(storeId: string | null) {
   const eventSourceRef = useRef<EventSource | null>(null);
-  const { addOrder, updateOrderStatus, deleteOrder, completeTable, setConnected, initMockData, useMock } =
+  const { addOrder, updateOrderStatus, deleteOrder, completeTable, setConnected, initMockData, useMock, tables } =
     useOrderStore();
 
   useEffect(() => {
-    if (!storeId) return;
-
-    // 목업 모드: 실제 SSE 대신 목업 데이터 초기화
+    // 목업 모드: storeId 없어도 목업 데이터 초기화
     if (useMock) {
-      initMockData();
+      // 이미 초기화되었으면 스킵
+      if (tables.length === 0) {
+        initMockData();
+      }
       return;
     }
 
-    // 실제 SSE 연결
+    // 실제 모드에서는 storeId 필수
+    if (!storeId) return;
+
     const eventSource = new EventSource(`/api/sse/orders?storeId=${storeId}`);
     eventSourceRef.current = eventSource;
 
@@ -53,5 +56,5 @@ export function useSSE(storeId: string | null) {
       eventSourceRef.current = null;
       setConnected(false);
     };
-  }, [storeId, useMock, addOrder, updateOrderStatus, deleteOrder, completeTable, setConnected, initMockData]);
+  }, [storeId, useMock, tables.length, addOrder, updateOrderStatus, deleteOrder, completeTable, setConnected, initMockData]);
 }

@@ -15,7 +15,7 @@ export default function DashboardPage() {
   const { tables, updateOrderStatus, deleteOrder, completeTable, connected } = useOrderStore();
   const [confirmAction, setConfirmAction] = useState<{ type: string; id: number } | null>(null);
 
-  // SSE 연결
+  // SSE 연결 (목업 모드에서는 storeId 없어도 동작)
   useSSE(adminInfo?.storeId ?? null);
 
   const handleStatusChange = (orderId: number, status: OrderStatus) => {
